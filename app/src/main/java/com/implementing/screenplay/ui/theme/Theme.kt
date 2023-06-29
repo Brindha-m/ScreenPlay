@@ -16,9 +16,12 @@ import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = AppOnPrimaryColor,
+    primaryContainer = AppOnPrimaryColor,
+    secondary = Teal200,
+    tertiary = Pink80,
+    onBackground = AppOnPrimaryColor,
+    background = AppPrimaryColor
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -65,6 +68,7 @@ fun ScreenplayTheme(
     MaterialTheme(
         colorScheme = colorScheme,
         typography = Typography,
+        shapes = ColdStarShapes,
         content = content
     )
 }
