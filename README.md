@@ -2,7 +2,7 @@
 
 ## Flow
        +-------------+       +-------------------+
-       | MainActivity| ----> | Navigation Graph  |
+       | MainActivity| ----> |  Navigation Graph |
        +-------------+       +-------------------+
                                        |
                                        V
@@ -36,7 +36,7 @@
           android:name=".ScreenPlay"/>
 
    ```
-3. Create a kotlin class ` ScreenPlay ` which extends : Application() and annotate it with @HiltAndroidApp.
+3. Create a kotlin class ` ScreenPlay ` which extends : Application() and annotate it with ` @HiltAndroidApp ` .
     
 
 
