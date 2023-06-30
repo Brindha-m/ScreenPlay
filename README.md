@@ -91,7 +91,13 @@
 -------------------------------------------------------------------------------------------------------------------------
 
 ####  👉🏻 Commit 8
-
+1. Time to create another package `repository`.
+2. GenereFilmRepository - @Inject constructor the Apiservice
+3. Make use of selaed class `ResourceState` here - success, error, load that was created in the `utils` package.
+4. when (filmType) {
+                    FilmType.MOVIE -> apiService.getMovieGenre()
+                    FilmType.TVSHOW -> apiService.getTvShowGenres()
+                }
 -------------------------------------------------------------------------------------------------------------------------
 
 ####  👉🏻 Commit 9
