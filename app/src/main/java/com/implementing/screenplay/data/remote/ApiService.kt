@@ -18,8 +18,9 @@ interface ApiService {
     ): GenreResponse
 
 //    Sample https://api.themoviedb.org/3/genre/movie/list?api_key=c02086cdfb63f21e9a53947164e4dec5&language=en
+// -- All, Action, Animation, Comedy, Crime, Drama, Family so on..
 
-    // -- Movie Now Playing --
+    // -- Movie Now Playing -- (need pagination)
     @GET("movie/now_playing")
     suspend fun getNowPlayingMovies(
         @Query("page") page: Int = 0,
