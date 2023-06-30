@@ -2,7 +2,7 @@
 
 ### Clean Architecture
 
-** MVVM ( Model ViewModel View) **
+**MVVM ( Model ViewModel View)**
      
       ╔══════════════════════╗                ╔══════════════════════╗                   ╔══════════════════════╗    
       ║     ** VIEW **       ║                ║   ** VIEW MODEL **   ║                   ║     ** MODEL **      ║     
