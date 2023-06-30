@@ -101,7 +101,7 @@
 
 2. GenereFilmRepository - @Inject constructor the Apiservice
 
-3. Make use of sealed class `ResourceState` here - success, error, load that was created in the `utils` package.
+3. Make use of sealed class `ResourceState` here - **Success, Error, Loading** that was created in the `utils` package.
 
 4. Use `when` instead of ` if-else `
 
@@ -117,7 +117,17 @@
 
 -------------------------------------------------------------------------------------------------------------------------
 
-####  👉🏻 Commit 9
+####  👉🏻 Commit 10
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+####  👉🏻 Commit 11
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
+####  👉🏻 Commit 12
 
 
 -------------------------------------------------------------------------------------------------------------------------
