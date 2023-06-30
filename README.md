@@ -1,6 +1,26 @@
 # ScreenPlay
 
-## Flow
+### Clean Architecture
+
+** MVVM ( Model ViewModel View) **
+     
+      ╔══════════════════════╗                ╔══════════════════════╗                   ╔══════════════════════╗    
+      ║     ** VIEW **       ║                ║   ** VIEW MODEL **   ║                   ║     ** MODEL **      ║     
+      ║    --------------    ║ ------------→  ║     --------------   ║  ------------→    ║    --------------    ║    
+      ║     UI Components    ║                ║        Survive       ║                   ║      Repositories    ║     
+      ║  Activity/ Fragments ║                ║     Config Change    ║                   ║ (Data classes, APIs) ║   
+      ╚══════════════════════╝                ╚══════════════════════╝                   ╚══════════════════════╝   
+                                                   Business Logic                                 Repositories
+                                                    ⭕ State                                     /            \
+                                                    ⭕ Live Data                            Remote           Local  
+                                                                                          Data Source       Data Source
+                                                                                        
+                                                                                        ✔️ Retrofit          ➡️ Room ( Large and complex datasets)
+                                                                                                              ➡️ DataStore ( Small or Simple datasets)
+
+      
+
+## Flow of Screen Play
        +-------------+       +-------------------+
        | MainActivity| ----> |  Navigation Graph |
        +-------------+       +-------------------+
