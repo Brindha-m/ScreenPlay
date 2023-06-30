@@ -105,12 +105,12 @@
 
 4. Use `when` instead of ` if-else `
 
-   ``
+   ```
           when (filmType) {
                     FilmType.MOVIE -> apiService.getMovieGenre()
                     FilmType.TVSHOW -> apiService.getTvShowGenres()
                 }
-   ``
+   ```
 -------------------------------------------------------------------------------------------------------------------------
 
 ####  👉🏻 Commit 9
