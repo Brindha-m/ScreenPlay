@@ -38,6 +38,11 @@ interface ApiService {
 
 
     /** TV Shows **/
+    @GET("genre/tv/list")
+    suspend fun getTvShowGenres(
+        @Query("api_key") apiKey: String = Utils.apiKey,
+        @Query("language") language: String = "en-US"
+    ): GenreResponse
 
 
     /** Search Engine **/
