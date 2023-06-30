@@ -1,8 +1,7 @@
 # ScreenPlay
 
-### Clean Architecture
-
-**MVVM ( Model ViewModel View)**
+### Clean Architecture - **MVVM ( Model ViewModel View)**
+# 
      
       ╔══════════════════════╗                ╔══════════════════════╗                   ╔══════════════════════╗    
       ║     ** VIEW **       ║                ║   ** VIEW MODEL **   ║                   ║     ** MODEL **      ║     
