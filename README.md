@@ -31,7 +31,7 @@
 
 1. Import the required Dependencies change in ` gradle.kts ` in both app and project modules.
 
-2. In `manifest.xml` add
+2. In `manifest.xml` add,
    
     ```
      <uses-permission android:name="android.permission.INTERNET"/>
