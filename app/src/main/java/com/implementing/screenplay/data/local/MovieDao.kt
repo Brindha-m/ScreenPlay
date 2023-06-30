@@ -1,4 +1,5 @@
-package com.implementing.screenplay.data.remote
+package com.implementing.screenplay.data.local
+
 
 interface MovieDao {
 }
