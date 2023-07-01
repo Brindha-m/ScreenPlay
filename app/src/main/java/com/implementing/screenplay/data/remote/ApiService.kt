@@ -52,6 +52,13 @@ interface ApiService {
         @Query("language") language: String = "en"
     ): MovieResponse
 
+    // -- TV Show Detail cast -- {movie_id} - path param and api_key - query param
+    @GET("tv/{tv_id}/credits")
+    suspend fun getTvShowCast(
+        @Path("tv_id") filmId: Int,
+        @Query("api_key") apiKey: String = Utils.apiKey
+    ): CastResponse
+
 
     /** Search Engine **/
 

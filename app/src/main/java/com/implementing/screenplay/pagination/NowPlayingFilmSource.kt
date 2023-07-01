@@ -10,8 +10,7 @@ import java.io.IOException
 
 class NowPlayingFilmSource(
     private val apiService: ApiService,
-    private val filmType: FilmType
-) : PagingSource<Int, Film>()
+    private val filmType: FilmType) : PagingSource<Int, Film>()
 {
     override fun getRefreshKey(state: PagingState<Int, Film>): Int? {
         return state.anchorPosition
