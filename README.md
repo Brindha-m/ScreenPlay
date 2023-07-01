@@ -133,8 +133,17 @@
 -------------------------------------------------------------------------------------------------------------------------
 
 ####  👉🏻 Commit 9
-1. Pagination
-2. Paginantion into repository.
+1. Create a ` pagination ` package.
+2. Pagination class,
+
+   - extends  : PagingSource<Int, Film> Film is a data model. Note: extends in kotlin is ' : '
+
+   - overrides 2 functions
+      - fun getRefreshKey()
+      - fun load()
+        
+3. Paginantion into repository.
+4. Pagination implementation inside repository.
 
 -------------------------------------------------------------------------------------------------------------------------
 
