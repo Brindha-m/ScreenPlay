@@ -44,6 +44,14 @@ interface ApiService {
         @Query("language") language: String = "en-US"
     ): GenreResponse
 
+    // -- TV Show Now Playing -- (need pagination)
+    @GET("tv/on_the_air")
+    suspend fun getNowPlayingTvSeries(
+        @Query("page") page: Int = 0,
+        @Query("api_key") apiKey: String = Utils.apiKey,
+        @Query("language") language: String = "en"
+    ): MovieResponse
+
 
     /** Search Engine **/
 
