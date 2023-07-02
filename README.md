@@ -161,21 +161,27 @@
 
     - val nowPlayingFilm : MutableState<Flow<PagingData<Film>>> = _nowPlayingFilm
   
-4. init {
-   /** call the required response type from apiService **/
-   nowPlayingFilmNetwork(filmType, genreId)
-   }
-
-6.
+4. Inside ViewModel Class
+   
    ```
-     fun nowPlayingFilmNetwork(filmType: FilmType, genreId: Int?) {
-        **viewModelScope.launch** {
-            _nowPlayingFilm.value = filterItem(
-                genreId,
-                homeRepository.nowPlayingFilm(filmType)
-            )**.cachedIn(viewModelScope)**
+        init {
+             /** call the required response type from apiService **/
+             nowPlayingFilmNetwork(filmType, genreId)
         }
-   }
+   
+   ```
+
+. Make use of  **viewModelScope.launch** { }.cacheIn(viewModelScope)
+   
+   ```
+          fun nowPlayingFilmNetwork(filmType: FilmType, genreId: Int?) {
+             viewModelScope.launch {
+                 _nowPlayingFilm.value = filterItem(
+                     genreId,
+                     homeRepository.nowPlayingFilm(filmType)
+                 )**.cachedIn(viewModelScope)**
+             }
+        }
      
      ```
     
