@@ -136,21 +136,50 @@
 1. Create a ` pagination ` package.
 2. Pagination class,
 
+   - needed params  ex : apiService and filmType (movie, tv shows)
+
    - extends  : PagingSource<Int, Film> Film is a data model. Note: extends in kotlin is ' : '
 
    - overrides 2 functions
       - fun getRefreshKey()
       - fun load()
         
-3. Paginantion into repository.
-4. Pagination implementation inside repository.
+4. Paginantion into repository.
+
+5. Pagination implementation inside repository. 
 
 -------------------------------------------------------------------------------------------------------------------------
 
 ####  👉🏻 Commit 10
 1. ViewModel
-2. Making use of @Inject constructor this time with Repository.
-3. And mutuable state of responses.
+
+2. Making use of @Inject constructor this time with Repository snd extends : ViewModel()
+
+3. Mutable - Changeable(realtime updation) list of datum but read-only json data ex : _nowPlayingFilm.
+   
+    - private val _nowPlayingFilm = mutableStateOf<Flow<PagingData<Film>>>(emptyFlow())
+
+    - val nowPlayingFilm : MutableState<Flow<PagingData<Film>>> = _nowPlayingFilm
+  
+4. init {
+   /** call the required response type from apiService **/
+   nowPlayingFilmNetwork(filmType, genreId)
+   }
+
+6.
+   ```
+     fun nowPlayingFilmNetwork(filmType: FilmType, genreId: Int?) {
+        **viewModelScope.launch** {
+            _nowPlayingFilm.value = filterItem(
+                genreId,
+                homeRepository.nowPlayingFilm(filmType)
+            )**.cachedIn(viewModelScope)**
+        }
+   }
+     
+     ```
+    
+
 
 
 -------------------------------------------------------------------------------------------------------------------------
