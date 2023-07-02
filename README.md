@@ -184,7 +184,16 @@
 
 -------------------------------------------------------------------------------------------------------------------------
 
-####  👉🏻 Commit 11
+####  👉🏻 Navigation Compose made easyy
+1. Import the necessary dependencies for the " Ksp Compose Destinations"
+
+2. In view, before @Composable annotation just add @Destination
+
+3. Rebuild the Project
+
+4. Automatically kotlin package will be created in your android project.
+
+5. In mainActivity ` DestinationsNavHost(navGraph = NavGraphs.root)`  
 
 
 -------------------------------------------------------------------------------------------------------------------------
