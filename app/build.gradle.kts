@@ -1,4 +1,3 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 import org.jetbrains.kotlin.utils.addToStdlib.ifTrue
 
 plugins {
@@ -7,12 +6,28 @@ plugins {
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
     id("kotlin-parcelize")
-    id("com.google.devtools.ksp") version "1.6.10-1.0.2"
+    id("com.google.devtools.ksp") version "1.8.0-1.0.9"
+}
+
+// Ksp. plugin for compose navigation
+kotlin {
+    // Configure source sets for 'debug' and 'release' variants
+    sourceSets {
+
+        val debug by getting {
+            kotlin.srcDir("build/generated/ksp/debug/kotlin") // Set the source directory for the 'debug' variant
+        }
+
+        val release by getting {
+            kotlin.srcDir("build/generated/ksp/release/kotlin") // Set the source directory for the 'release' variant
+        }
+    }
 }
 
 android {
     namespace = "com.implementing.screenplay"
     compileSdk = 33
+
 
     defaultConfig {
         applicationId = "com.implementing.screenplay"
@@ -37,17 +52,19 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"
+//        kotlinCompilerExtensionVersion = "1.1.1"
+
     }
     packaging {
         resources {
@@ -66,6 +83,7 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3")
+    implementation("androidx.compose.material:material")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -100,13 +118,14 @@ dependencies {
     implementation("com.airbnb.android:lottie-compose:6.0.1")
 
     // RaamCosta Navigation
+    implementation("androidx.navigation:navigation-compose:2.7.0-beta01")
+
     implementation("io.github.raamcosta.compose-destinations:core:1.4.0-beta")
     ksp("io.github.raamcosta.compose-destinations:ksp:1.4.0-beta")
 
     // Hilt
     implementation("com.google.dagger:hilt-android:2.46")
     kapt("com.google.dagger:hilt-android-compiler:2.46")
-    implementation("androidx.hilt:hilt-lifecycle-viewmodel:1.0.0-alpha03")
     kapt("androidx.hilt:hilt-compiler:1.0.0")
 
     // Hilt - for @HiltViewModel
@@ -126,7 +145,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
 
     // Pagination
-    implementation("androidx.paging:paging-compose:3.2.0-rc01")
+    implementation("androidx.paging:paging-compose:1.0.0-alpha15")
 
     // Prefs Datastore
     implementation("androidx.datastore:datastore-preferences:1.0.0")
@@ -135,6 +154,10 @@ dependencies {
     implementation("androidx.room:room-runtime:2.5.2")
     implementation("androidx.room:room-ktx:2.5.2")
     ksp("androidx.room:room-compiler:2.5.2")
+
+
+    implementation("com.google.devtools.ksp:symbol-processing-api:1.8.20-1.0.10")
+
 
 }
 
