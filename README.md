@@ -171,26 +171,25 @@
    
    ```
 
-. Make use of  **viewModelScope.launch** { }.cacheIn(viewModelScope)
+ -  Make use of  **viewModelScope.launch** { }.cacheIn(viewModelScope)
    
-   ```
-          fun nowPlayingFilmNetwork(filmType: FilmType, genreId: Int?) {
-             viewModelScope.launch {
-                 _nowPlayingFilm.value = filterItem(
-                     genreId,
-                     homeRepository.nowPlayingFilm(filmType)
-                 )**.cachedIn(viewModelScope)**
+        ```
+               fun nowPlayingFilmNetwork(filmType: FilmType, genreId: Int?) {
+                  viewModelScope.launch {
+                      _nowPlayingFilm.value = filterItem(
+                          genreId,
+                          homeRepository.nowPlayingFilm(filmType)
+                      )**.cachedIn(viewModelScope)**
+                  }
              }
-        }
-     
-     ```
+          
+          ```
     
-
-
 
 -------------------------------------------------------------------------------------------------------------------------
 
 ####  👉🏻 Navigation Compose made easyy
+
 1. Import the necessary dependencies for the " Ksp Compose Destinations"
 
 2. In view, before @Composable annotation just add @Destination
@@ -206,5 +205,12 @@
 
 ####  👉🏻 Commit 12
 
+1. Search Functionality
+
+-------------------------------------------------------------------------------------------------------------------------
+
+####  👉🏻 Commit 13
+
+1. Room DB
 
 -------------------------------------------------------------------------------------------------------------------------
