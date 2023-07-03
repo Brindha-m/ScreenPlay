@@ -4,16 +4,17 @@ import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
+
 @Parcelize
 data class Film(
     @SerializedName("adult")
-    val adult: Boolean? = null,
+    val adult: Boolean,
     @SerializedName("backdrop_path")
-    val backdropPath: String? = null,
+    val backdropPath: String?,
     @SerializedName("poster_path")
-    val posterPath: String? = null,
+    val posterPath: String?,
     @SerializedName("genre_ids")
-    val genreIds: List<Int>? = null,
+    val genreIds: List<Int>?,
     @SerializedName("genres")
 //  Alternative way -  val genres: List<Genre> = emptyList()
     val genres: List<Genre>?,

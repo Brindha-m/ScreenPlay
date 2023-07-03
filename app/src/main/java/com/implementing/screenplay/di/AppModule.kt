@@ -3,6 +3,7 @@ package com.implementing.screenplay.di
 import android.content.Context
 import androidx.room.Room
 import com.implementing.screenplay.data.remote.ApiService
+import com.implementing.screenplay.repository.HomeRepository
 import com.implementing.screenplay.utils.Utils.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -53,6 +54,12 @@ object AppModule {
     }
 
     // Room DB
+
+    @Singleton
+    @Provides
+    fun provideMovieRepository(apiService: ApiService):
+            HomeRepository = HomeRepository(apiService)
+
 
 
 }

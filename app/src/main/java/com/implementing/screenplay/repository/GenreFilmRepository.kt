@@ -10,29 +10,24 @@ import javax.inject.Inject
 class GenreFilmRepository @Inject
     constructor(private val apiService: ApiService)
 {
-        suspend fun genreFilm(filmType: FilmType): ResourceState<GenreResponse> {
-            val response = try {
-                when (filmType) {
-                    FilmType.MOVIE -> apiService.getMovieGenre()
-                    FilmType.TVSHOW -> apiService.getTvShowGenres()
-                }
-                /**
-                --- Old normal way using if else ---
-                    if (filmType == FilmType.MOVIE)
-                        apiService.getMovieGenre()
-                    else if(filmType == FilmType.TVSHOW)
-                        apiService.getTvShowGenres()
-                    else TODO()
-                 **/
+    suspend fun genreFilm(filmType: FilmType): ResourceState<GenreResponse> {
+        val response = try {
+            if (filmType == FilmType.MOVIE)
+                apiService.getMovieGenres()
+            else apiService.getTvShowGenres()
 
-            }
-            catch (e: Exception) {
-                return ResourceState.Error("Unknown error occurred: ${e.localizedMessage}")
-            }
-            catch (e: HttpException) {
-                return ResourceState.Error("HTTP error: ${e.localizedMessage}")
-            }
-        return ResourceState.Success(response)
-
+//            when (filmType) {
+//                FilmType.MOVIE -> apiService.getMovieGenres()
+//                FilmType.TVSHOW -> apiService.getTvShowGenres()
+//            }
         }
+        catch (e: Exception) {
+            return ResourceState.Error("Unknown error occurred: ${e.localizedMessage}")
+        }
+        catch (e: HttpException) {
+            return ResourceState.Error("HTTP error: ${e.localizedMessage}")
+        }
+    return ResourceState.Success(response)
+
+    }
 }

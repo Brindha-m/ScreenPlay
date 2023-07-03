@@ -3,6 +3,7 @@ package com.implementing.screenplay.data.remote
 import com.implementing.screenplay.data.remote.response.CastResponse
 import com.implementing.screenplay.data.remote.response.GenreResponse
 import com.implementing.screenplay.data.remote.response.MovieResponse
+import com.implementing.screenplay.data.remote.response.MultiSearchResponse
 import com.implementing.screenplay.utils.Utils
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -12,7 +13,7 @@ interface ApiService {
     /** Movies **/
     // -- Movie Genre --
     @GET("genre/movie/list")
-    suspend fun getMovieGenre(
+    suspend fun getMovieGenres(
         @Query("api_key") apiKey: String = Utils.apiKey,
         @Query("language") language: String = "en"
     ): GenreResponse
@@ -61,5 +62,14 @@ interface ApiService {
 
 
     /** Search Engine **/
+
+    @GET("search/multi")
+    suspend fun multiSearch(
+        @Query("query") searchParams: String,
+        @Query("page") page: Int = 0,
+        @Query("include_adult") includeAdult: Boolean = false,
+        @Query("api_key") apiKey: String = Utils.apiKey,
+        @Query("language") language: String = "en"
+    ): MultiSearchResponse
 
 }
