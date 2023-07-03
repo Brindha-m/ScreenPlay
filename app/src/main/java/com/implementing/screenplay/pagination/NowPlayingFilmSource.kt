@@ -19,10 +19,15 @@ class NowPlayingFilmSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Film> {
         return try {
             val nextPage = params.key ?: 1
-            val trendingFilmData = when (filmType) {
-                FilmType.MOVIE -> apiService.getNowPlayingMovies(page = nextPage)
-                FilmType.TVSHOW -> apiService.getNowPlayingTvSeries(page = nextPage)
-            }
+            val trendingFilmData =  if (filmType == FilmType.MOVIE)
+                apiService.getNowPlayingMovies(page = nextPage)
+            else
+                apiService.getNowPlayingTvSeries(page = nextPage)
+
+//                when (filmType) {
+//                FilmType.MOVIE -> apiService.getNowPlayingMovies(page = nextPage)
+//                FilmType.TVSHOW -> apiService.getNowPlayingTvSeries(page = nextPage)
+//            }
 
             LoadResult.Page(
                 nextKey = if (trendingFilmData.results.isEmpty()) null else nextPage + 1,
