@@ -14,8 +14,8 @@
                                                     ⭕ Live Data                            Remote           Local  
                                                                                           Data Source       Data Source
                                                                                         
-                                                                                        ✔️ Retrofit          ➡️ Room ( Large and complex datasets)
-                                                                                                              ➡️ DataStore ( Small or Simple datasets)
+                                                                                        ✔️ Retrofit          ➡️ Room (Large and complex datasets)
+                                                                                                              ➡️ DataStore (Small or Simple datasets)
 
       
 
@@ -212,5 +212,51 @@
 ####  👉🏻 Commit 13
 
 1. Room DB
+2. Create a data model class
+
+    ```
+       @Entity(tableName = "watch_list_table")
+       data class MyListMovie (
+         @PrimaryKey
+         val mediaId: Int,
+         val imagePath: String,
+         val title: String,
+         val releaseDate: String,
+         val rating: Double,
+         val addedOn: String
+      )
+     
+    ```
+   
+4. Dao (Interface)
+
+    ```
+     @Dao
+     interface MovieDao {
+         @Insert(onConflict = REPLACE)
+         suspend fun insertMovieInList(myListMovie: MyListMovie)
+     
+         @Query("DELETE FROM watch_list_table WHERE mediaId = :mediaId")
+         suspend fun removeFromList(mediaId: Int)
+     
+         @Query("SELECT EXISTS (SELECT 1 FROM watch_list_table WHERE mediaId = :mediaId)")
+         suspend fun exists(mediaId: Int): Int
+     
+         @Query("SELECT * FROM watch_list_table ORDER BY addedOn DESC")
+         suspend fun getAllWatchListData(): Flow<List<MyListMovie>>
+     }
+       
+     
+    ```
+6. Create a Abstract class for room database
+
+   ```
+        @AutoMigration(from = 1, to = 2)
+        @Database(version = 1, entities = [MyListMovie::class], exportSchema = false)
+          abstract class MovieDatabase(): RoomDatabase() {
+              abstract fun movieDao(): MovieDao
+          }
+     
+    ```
 
 -------------------------------------------------------------------------------------------------------------------------
