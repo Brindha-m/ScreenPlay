@@ -2,8 +2,11 @@ package com.implementing.screenplay.di
 
 import android.content.Context
 import androidx.room.Room
+import com.implementing.screenplay.data.local.MovieDao
+import com.implementing.screenplay.data.local.MovieDatabase
 import com.implementing.screenplay.data.remote.ApiService
 import com.implementing.screenplay.repository.HomeRepository
+import com.implementing.screenplay.repository.MyListMovieRepository
 import com.implementing.screenplay.utils.Utils.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -34,10 +37,10 @@ object AppModule {
     fun providesOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
-            .callTimeout(15, TimeUnit.SECONDS)
-            .connectTimeout(15, TimeUnit.SECONDS)
-            .writeTimeout(15, TimeUnit.SECONDS)
-            .readTimeout(15, TimeUnit.SECONDS)
+            .callTimeout(10, TimeUnit.SECONDS)
+            .connectTimeout(5, TimeUnit.SECONDS)
+            .writeTimeout(5, TimeUnit.SECONDS)
+            .readTimeout(5, TimeUnit.SECONDS)
             .build()
     }
 
@@ -53,13 +56,29 @@ object AppModule {
             .create(ApiService::class.java)
     }
 
-    // Room DB
+    // Home Repo For movies
 
     @Singleton
     @Provides
     fun provideMovieRepository(apiService: ApiService):
             HomeRepository = HomeRepository(apiService)
 
+
+    // Room DB
+    @Provides
+    @Singleton
+    fun provideLocalDatabase(@ApplicationContext context: Context) : MovieDatabase =
+        Room.databaseBuilder(context, MovieDatabase::class.java, "watch_list_table")
+        .fallbackToDestructiveMigration().build()
+
+    @Provides
+    fun provideMovieDao(movieDatabase: MovieDatabase) = movieDatabase.movieDao()
+
+
+    @Singleton
+    @Provides
+    fun provideMyListRepository(movieDao: MovieDao): MyListMovieRepository =
+        MyListMovieRepository(movieDao = movieDao)
 
 
 }
