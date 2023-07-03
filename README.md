@@ -133,20 +133,73 @@
 -------------------------------------------------------------------------------------------------------------------------
 
 ####  👉🏻 Commit 9
-1. Pagination
-2. Paginantion into repository.
+1. Create a ` pagination ` package.
+2. Pagination class,
+
+   - needed params  ex : apiService and filmType (movie, tv shows)
+
+   - extends  : PagingSource<Int, Film> Film is a data model. Note: extends in kotlin is ' : '
+
+   - overrides 2 functions
+      - fun getRefreshKey()
+      - fun load()
+        
+4. Paginantion into repository.
+
+5. Pagination implementation inside repository. 
 
 -------------------------------------------------------------------------------------------------------------------------
 
 ####  👉🏻 Commit 10
 1. ViewModel
-2. Making use of @Inject constructor this time with Repository.
-3. And mutuable state of responses.
+
+2. Making use of @Inject constructor this time with Repository snd extends : ViewModel()
+
+3. Mutable - Changeable(realtime updation) list of datum but read-only json data ex : _nowPlayingFilm.
+   
+    - private val _nowPlayingFilm = mutableStateOf<Flow<PagingData<Film>>>(emptyFlow())
+
+    - val nowPlayingFilm : MutableState<Flow<PagingData<Film>>> = _nowPlayingFilm
+  
+4. Inside ViewModel Class
+   
+   ```
+        init {
+             /** call the required response type from apiService **/
+             nowPlayingFilmNetwork(filmType, genreId)
+        }
+   
+   ```
+
+. Make use of  **viewModelScope.launch** { }.cacheIn(viewModelScope)
+   
+   ```
+          fun nowPlayingFilmNetwork(filmType: FilmType, genreId: Int?) {
+             viewModelScope.launch {
+                 _nowPlayingFilm.value = filterItem(
+                     genreId,
+                     homeRepository.nowPlayingFilm(filmType)
+                 )**.cachedIn(viewModelScope)**
+             }
+        }
+     
+     ```
+    
+
 
 
 -------------------------------------------------------------------------------------------------------------------------
 
-####  👉🏻 Commit 11
+####  👉🏻 Navigation Compose made easyy
+1. Import the necessary dependencies for the " Ksp Compose Destinations"
+
+2. In view, before @Composable annotation just add @Destination
+
+3. Rebuild the Project
+
+4. Automatically kotlin package will be created in your android project.
+
+5. In mainActivity ` DestinationsNavHost(navGraph = NavGraphs.root)`  
 
 
 -------------------------------------------------------------------------------------------------------------------------
