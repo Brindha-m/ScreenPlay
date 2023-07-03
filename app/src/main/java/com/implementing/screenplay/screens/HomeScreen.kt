@@ -12,8 +12,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.implementing.screenplay.screens.destinations.DetailFilmScreenDestination
+import com.implementing.screenplay.screens.destinations.SavedMovieScreenDestination
+import com.implementing.screenplay.screens.destinations.SearchScreenDestination
 import com.implementing.screenplay.shareScreenCompose.GenreChip
 import com.implementing.screenplay.shareScreenCompose.ScrollableMovieItem
+import com.implementing.screenplay.shareScreenCompose.SearchAndList
 import com.implementing.screenplay.shareScreenCompose.ShowAboutCategory
 import com.implementing.screenplay.utils.FilmType
 import com.implementing.screenplay.viewmodel.HomeViewModel
@@ -28,11 +32,11 @@ fun HomeScreen(homeViewModel: HomeViewModel = hiltViewModel(), navigator: Destin
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
-//        SearchAndList(
-//            homeViewModel = homeViewModel,
-//            onRoomWatchList = { navigator.navigate(direction = DetailFilmScreenDestination()) },
-//            onSearchScreen = { navigator.navigate(direction = SearchScreenDestination()) }
-//        )
+        SearchAndList(
+            homeViewModel = homeViewModel,
+            onRoomWatchList = { navigator.navigate(direction = SavedMovieScreenDestination()) },
+            onSearchScreen = { navigator.navigate(direction = SearchScreenDestination()) }
+        )
         NestedScroll(homeViewModel, navigator = navigator)
     }
 }

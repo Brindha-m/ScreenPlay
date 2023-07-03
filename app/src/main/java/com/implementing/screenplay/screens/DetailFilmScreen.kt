@@ -25,6 +25,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.implementing.screenplay.R
+import com.implementing.screenplay.data.local.MyListMovie
 import com.implementing.screenplay.model.Film
 import com.implementing.screenplay.shareScreenCompose.*
 import com.implementing.screenplay.ui.theme.AppOnPrimaryColor
@@ -34,6 +35,7 @@ import com.implementing.screenplay.utils.FilmType
 import com.implementing.screenplay.utils.Utils.BASE_BACKDROP_IMAGE_URL
 import com.implementing.screenplay.utils.Utils.BASE_POSTER_IMAGE_URL
 import com.implementing.screenplay.viewmodel.MovieDetailViewModel
+import com.implementing.screenplay.viewmodel.WatchListViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.skydoves.landscapist.ShimmerParams
@@ -46,6 +48,7 @@ import java.util.*
 fun DetailFilmScreen(
     currentFilm: Film,
     currentFilmType: FilmType,
+    watchListViewModel: WatchListViewModel = hiltViewModel(),
     movieDetailViewModel: MovieDetailViewModel = hiltViewModel(),
     navigator: DestinationsNavigator
 ) {
@@ -53,8 +56,17 @@ fun DetailFilmScreen(
     val filmType by remember { mutableStateOf(currentFilmType) }
     val date = SimpleDateFormat.getDateInstance().format(Date())
 
+    val myListMovie = MyListMovie(
+        mediaId = film.id,
+        imagePath = film.posterPath,
+        title = film.title,
+        releaseDate = film.releaseDate,
+        rating = film.voteAverage,
+        addedOn = date
+    )
 
     LaunchedEffect(key1 = film) {
+        watchListViewModel.exist(film.id)
         movieDetailViewModel.getFilmTag(filmType = filmType)
         movieDetailViewModel.getFilmCast(filmType = filmType, medialId = film.id)
     }
@@ -177,6 +189,13 @@ fun DetailFilmScreen(
                     style = MaterialTheme.typography.labelSmall
                 )
                 RatingBarUI(vote = film.voteAverage)
+                IconRow(
+                    exist = watchListViewModel.exist.value,
+                    context = context,
+                    removeOnClick = { watchListViewModel.removeFromWatchList(mediaId = film.id) },
+                    addOnClick = { watchListViewModel.addToWatchList(myListMovie) },
+                    ottOnClick = { }
+                )
             }
         }
 
