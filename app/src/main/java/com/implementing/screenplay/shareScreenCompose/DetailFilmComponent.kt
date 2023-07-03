@@ -22,16 +22,13 @@ fun IconRow(
     context: Context,
     removeOnClick: () -> Unit,
     addOnClick: () -> Unit,
-    onReviewClick: () -> Unit,
     ottOnClick: () -> Unit
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.spacedBy(2.dp)
     ) {
-        IconButton(onClick = { onReviewClick() }) {
-            Icon(imageVector = Icons.Default.RateReview, contentDescription = "Review")
-        }
+
         IconButton(onClick = { ottOnClick() }) {
             Icon(
                 imageVector = Icons.Default.PlayCircleOutline,
@@ -51,7 +48,7 @@ fun IconRow(
                 addOnClick()
                 Toast.makeText(
                     context,
-                    "Added to your Watch List",
+                    "Added to your watchlist☺️",
                     Toast.LENGTH_SHORT
                 ).show()
             }

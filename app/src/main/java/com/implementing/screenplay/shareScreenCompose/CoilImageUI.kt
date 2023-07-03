@@ -15,12 +15,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.implementing.screenplay.R
 import com.implementing.screenplay.ui.theme.AppOnPrimaryColor
 import com.implementing.screenplay.ui.theme.AppPrimaryColor
+import com.implementing.screenplay.ui.theme.ScreenPlayShapes
 import com.skydoves.landscapist.CircularReveal
 import com.skydoves.landscapist.ShimmerParams
 import com.skydoves.landscapist.coil.CoilImage
@@ -98,15 +100,15 @@ fun PosterCoilImage(modifier: Modifier, url: String) {
 @Composable
 fun CircleCoilImage(url: String, name: String = "", job: String = "") {
     Column(
-        modifier = Modifier.width(72.dp),
+        modifier = Modifier.width(88.dp),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         CoilImage(
             imageModel = url,
             modifier = Modifier
-                .size(64.dp)
-                .clip(CircleShape),
+                .size(130.dp)
+                .clip(ScreenPlayShapes.large),
             shimmerParams = ShimmerParams(
                 baseColor = AppPrimaryColor,
                 durationMillis = 500,
