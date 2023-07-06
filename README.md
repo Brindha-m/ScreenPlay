@@ -263,3 +263,46 @@
 
 
 -------------------------------------------------------------------------------------------------------------------------
+
+`Coroutines`
+
+Imagine you have a weather application that displays the current temperature of a location. When the user opens the application, it needs to fetch the latest temperature from a remote server and display it on the screen. However, fetching the temperature involves a network call, which can be a time-consuming operation. To prevent blocking the main thread and keep the user interface responsive, you can use coroutines.
+
+-------------------------------------------------------------------------------------------------------------------------
+
+Start with ApiServices with the endpoints.
+
+**@Inject constructor apiService** is common for all the repo, vm, and views.
+
+| REPOSITORY --->  | VIEWMODEL ---> | VIEW (Composables) |
+|------------------|----------------|-------------------|
+| ApiService  | repository | viewmodel |
+
+
+| REPOSITORY |
+
+      
+           class HomeRepository @Inject
+               constructor(private val apiService: ApiService) { } 
+     
+
+| VIEWMODEL | 
+
+     
+     
+     @HiltViewModel
+          class HomeViewModel @Inject constructor(
+              private val homeRepository: HomeRepository,
+              private val genreFilmRepository: GenreFilmRepository
+          ) : ViewModel()  { }
+     
+     
+
+| VIEW (Composables) |  
+
+     
+     @Composable
+        fun HomeScreen(homeViewModel: HomeViewModel = hiltViewModel(), navigator: DestinationsNavigator) { }
+     
+     
+
