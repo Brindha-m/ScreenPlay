@@ -270,7 +270,7 @@ Imagine you have a weather application that displays the current temperature of 
 
 -------------------------------------------------------------------------------------------------------------------------
 
-Start with ApiServices with the endpoints.
+## - Start with ApiServices with the endpoints.
 
 **@Inject constructor apiService** is common for all the repo, vm, and views.
 
@@ -282,8 +282,8 @@ Start with ApiServices with the endpoints.
 | REPOSITORY |
 
       
-           class HomeRepository @Inject
-               constructor(private val apiService: ApiService) { } 
+      class HomeRepository @Inject
+          constructor(private val apiService: ApiService) { } 
      
 
 | VIEWMODEL | 
