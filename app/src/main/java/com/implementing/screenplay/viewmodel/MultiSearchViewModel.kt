@@ -22,7 +22,10 @@ class MultiSearchViewModel @Inject constructor(private val multiSearchRepository
     val searchParam = mutableStateOf("")
     val previousSearch = mutableStateOf("")
 
+// _multiSearch -> mutable state that holds the flow of PagingData<Search>
     private var _multiSearch = mutableStateOf<Flow<PagingData<Search>>>(emptyFlow())
+
+//    multiSearchState -> public immutable (readonly) state that exposes the flow of PagingData<Search> from _multiSearch.
     val multiSearchState: State<Flow<PagingData<Search>>> = _multiSearch
 
     init {

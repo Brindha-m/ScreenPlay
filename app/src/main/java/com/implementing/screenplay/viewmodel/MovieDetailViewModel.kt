@@ -29,8 +29,6 @@ class MovieDetailViewModel @Inject constructor(
     private val genreFilmRepository: GenreFilmRepository,
 ) :
     ViewModel() {
-    private val _similarMovie = mutableStateOf<Flow<PagingData<Film>>>(emptyFlow())
-    val similarMovie :MutableState<Flow<PagingData<Film>>> = _similarMovie
 
     private val _filmCast = mutableStateOf<List<Cast>>(emptyList())
     val filmCast: State<List<Cast>> = _filmCast
