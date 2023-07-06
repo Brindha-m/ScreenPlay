@@ -305,4 +305,11 @@ Imagine you have a weather application that displays the current temperature of 
         fun HomeScreen(homeViewModel: HomeViewModel = hiltViewModel(), navigator: DestinationsNavigator) { }
      
      
+-------------------------------------------------------------------------------------------------------------------------
+## Configuration to Kotlin DSL(Domain Specific Language) from Groovy
 
+1. Switch to project view, and time to create a directory named `buildSrc` and add a `build.gradle.kts ` file.
+
+2. Sync the project.
+
+3. TODOS
