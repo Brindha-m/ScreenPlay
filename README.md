@@ -270,7 +270,7 @@ Imagine you have a weather application that displays the current temperature of 
 
 -------------------------------------------------------------------------------------------------------------------------
 
-## - Start with ApiServices with the endpoints.
+### - Start with ApiServices define the endpoints.
 
 **@Inject constructor apiService** is common for all the repo, vm, and views.
 
