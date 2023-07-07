@@ -179,7 +179,7 @@
                       _nowPlayingFilm.value = filterItem(
                           genreId,
                           homeRepository.nowPlayingFilm(filmType)
-                      )**.cachedIn(viewModelScope)**
+                      ).cachedIn(viewModelScope)
                   }
              }
           
