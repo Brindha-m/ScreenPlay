@@ -264,9 +264,15 @@
 
 -------------------------------------------------------------------------------------------------------------------------
 
-`Coroutines`
+### Coroutines
 
-Imagine you have a weather application that displays the current temperature of a location. When the user opens the application, it needs to fetch the latest temperature from a remote server and display it on the screen. However, fetching the temperature involves a network call, which can be a time-consuming operation. To prevent blocking the main thread and keep the user interface responsive, you can use coroutines.
+- Imagine you have a weather application that displays the current temperature of a location.
+
+- When the user opens the application, it needs to fetch the latest temperature from a remote server and display it on the screen.
+
+- However, fetching the temperature involves a network call, which can be a time-consuming operation.
+
+- To prevent ` blocking the main thread and keep the user interface responsive `, you can use coroutines.
 
 -------------------------------------------------------------------------------------------------------------------------
 
@@ -319,7 +325,6 @@ Imagine you have a weather application that displays the current temperature of 
 
    ```
    
-   /* versions block 📌 */
    [versions]
    {...
         room = "3.0"
@@ -328,14 +333,13 @@ Imagine you have a weather application that displays the current temperature of 
 
    ...}
 
-   /* libraries block 📌 */
+
    [libraries]
    
     room_compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
     room_ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 
-     
-   /* bundles block 📌 */  
+ 
    [bundles]
    room = ["room_ktx", "room_compiler"]
    
