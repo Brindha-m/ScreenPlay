@@ -313,10 +313,47 @@ Imagine you have a weather application that displays the current temperature of 
 
 2. Sync the project.
 
-3. TODOS
+3. Now inside ` project -> gradle ` directory create a file ` libs.versions.toml`
 
+4. In this file, we'll define versions, libraries, bundles and plugins.
+
+   ```
+   
+   /* versions block 📌 */
+   [versions]
+   {...
+        room = "3.0"
+        kotlin = "1.8"
+        compose_material_3 = "1.1.0"
+
+   ...}
+
+   /* libraries block 📌 */
+   [libraries]
+   
+    room_compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+    room_ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+
+     
+   /* bundles block 📌 */  
+   [bundles]
+   room = ["room_ktx", "room_compiler"]
+   
+   ```
+
+5. And now, in our build.gradle.kts ( app module)
+   ```
+        dependencies {
+
+             ksp(libs.room.compiler)
+             implementation(libs.bundles.room)
+
+        }
+   
+   ```
 
 -------------------------------------------------------------------------------------------------------------------------
 
 ## Figma to andriod for compose ui utlizing relay
 
+TODOS
