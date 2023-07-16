@@ -266,6 +266,16 @@
 
 ### Coroutines
 
+- Coroutines, introduced in Kotlin, provide a more lightweight and structured approach to `concurrency`.
+
+- In java we have threads (Runnable interfaces and thread class), Threads are heavyweight.
+  
+- Coroutines are built on top of threads but offer a higher-level programming model that allows for easier `asynchronous` programming.
+
+- Coroutines can `suspend and resume `their execution, allowing for efficient handling of long-running operations without blocking threads.
+
+**Example:** 
+
 - Imagine you have a weather application that displays the current temperature of a location.
 
 - When the user opens the application, it needs to fetch the latest temperature from a remote server and display it on the screen.
@@ -275,6 +285,35 @@
 - To prevent ` blocking the main thread and keep the user interface responsive `, you can use coroutines.
 
 -------------------------------------------------------------------------------------------------------------------------
+
+### Serializable and Parcelable in the context of Android
+
+
+- Both Serializable and Parcelable are the interfaces that allows `objects` to be converted into a `byte stream` for storage or transmission.
+
+- Parcelable is an Android-specific interface.
+  
+
+| Feature       | Serializable | Parcelable   |
+|---------------|--------------|--------------|
+| Performance   | Slower       | Faster       |
+| Implementation| Simple       | Complex      |
+| Data Size     | Larger       | Smaller      |
+| Flexibility   | Limited      | Extensive    |
+| External Libraries | Not required | Not required |
+
+
+Example: 
+
+   - Imagine you have an Android app that allows users to create and save notes.
+   
+   - You want to serialize a Note object to save it to a file or transmit it over a network. 
+   
+   - You can implement the Serializable interface in the Note class, which would enable you to write the Note object directly to a file or send it as a byte stream.
+
+
+-------------------------------------------------------------------------------------------------------------------------
+
 
 ### - Start with ApiServices define the endpoints.
 
