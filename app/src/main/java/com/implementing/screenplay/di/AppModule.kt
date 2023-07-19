@@ -67,15 +67,25 @@ object AppModule {
     // Room DB
     @Provides
     @Singleton
-    fun provideLocalDatabase(@ApplicationContext context: Context) : MovieDatabase =
-        Room.databaseBuilder(context, MovieDatabase::class.java, "watch_list_table")
-        .fallbackToDestructiveMigration().build()
+    fun provideLocalDatabase(
+        @ApplicationContext context: Context) : MovieDatabase =
+        Room
+            .databaseBuilder(
+                context,
+                MovieDatabase::class.java,
+                "watch_list_table"
+            )
+             .fallbackToDestructiveMigration()
+             .build()
+
+    /** A function to provide a single instance of the local database Dao throughout our app */
 
     @Provides
+    @Singleton
     fun provideMovieDao(movieDatabase: MovieDatabase) = movieDatabase.movieDao()
 
 
-    @Singleton
+//    @Singleton
     @Provides
     fun provideMyListRepository(movieDao: MovieDao): MyListMovieRepository =
         MyListMovieRepository(movieDao = movieDao)
