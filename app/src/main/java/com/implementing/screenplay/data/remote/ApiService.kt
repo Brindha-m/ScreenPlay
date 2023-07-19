@@ -18,7 +18,7 @@ interface ApiService {
         @Query("language") language: String = "en"
     ): GenreResponse
 
-//    Sample https://api.themoviedb.org/3/genre/movie/list?api_key=c02086cdfb63f21e9a53947164e4dec5&language=en
+//    Sample https://api.themoviedb.org/3/genre/movie/list?api_key=c02086cdfb63f21e9a53947164e4de..&language=en
 // -- All, Action, Animation, Comedy, Crime, Drama, Family so on..
 
     // -- Movie Now Playing -- (need pagination)
