@@ -20,6 +20,8 @@
 
 
 
+### ScreenShots
+
 | Home Screenshot | Search Screen | Detail Screenshot | Watch later (Room) Screen |
 |:---:|:---:|:---:|:---:|
 | ![Home Screen](https://github.com/Brindha-m/ScreenPlay/assets/72887609/4b890b09-72b8-4745-8bd7-bbfe20bb6251)| ![Search](https://github.com/Brindha-m/ScreenPlay/assets/72887609/1f495de8-e31f-40d9-b814-297d34b0bf19)| ![Detail](https://github.com/Brindha-m/ScreenPlay/assets/72887609/5de5187f-9fb8-4cf5-a407-9a705b6abe10)| ![Room](https://github.com/Brindha-m/ScreenPlay/assets/72887609/14393f26-9b5f-4536-b063-df51886742cb)| 
