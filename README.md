@@ -410,3 +410,17 @@ Example:
 ## Figma to andriod for compose ui utilizing relay
 
 TODOS
+
+
+Comparison of key differences between `MutableStateFlow`, `StateFlow`, `State`, and other concepts in Kotlin Coroutines:
+
+
+| Concept                | Mutability | Usage                       | Use Cases                  |
+|------------------------|------------|-----------------------------|----------------------------|
+| MutableStateFlow       | Mutable    | To emit and update state    | ViewModel, Mutable state   |
+| StateFlow              | Immutable  | To observe state changes    | ViewModel, Immutable state |
+| State (Android Jetpack)| Immutable  | To observe ViewModel state | ViewModel, Immutable state |
+| LiveData               | Mutable    | To observe state changes    | ViewModel, Mutable state   |
+| Flow                   | Immutable  | To emit and observe values | Asynchronous operations   |
+
+
