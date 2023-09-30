@@ -424,3 +424,56 @@ Comparison of key differences between `MutableStateFlow`, `StateFlow`, `State`, 
 | Flow                   | Immutable  | To emit and observe values | Asynchronous operations   |
 
 
+## Coroutines
+
+     import kotlinx.coroutines.*
+     
+     // both funcs will run on different Threads
+     
+     fun main() {
+         
+         uiTask()
+         
+         //  To call Async Coroutines suspend func
+         GlobalScope.launch{
+             networkTask()
+            }
+         GlobalScope.launch{
+            alldoneTask()
+         }
+         
+        
+     }
+     
+     fun uiTask() {
+         println()
+         print("UI elements Loaded --> ")
+         print(Thread.currentThread().name)
+         println()
+     }
+     
+     suspend fun networkTask() {
+         withContext(Dispatchers.IO) {
+             println()
+             print("Network Called --> ")
+     		print(Thread.currentThread().name)
+             println()
+         }
+     }
+     
+     suspend fun alldoneTask() {
+         withContext(Dispatchers.IO) {
+             println()
+             print("Done Complete --> ")
+     		print(Thread.currentThread().name)
+             println()
+         }
+     }
+
+
+o/p
+
+     Done Complete --> DefaultDispatcher-worker-3 @coroutine#2 
+     Network Called --> DefaultDispatcher-worker-1 @coroutine#1 
+     UI elements Loaded --> main
+     
