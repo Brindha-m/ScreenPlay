@@ -1,8 +1,11 @@
 # ScreenPlay
 
+> https://coggle.it/diagram/ZVaDUsJZbsTt5fqB/t/android-kotlin
+
 ### Clean Architecture - **MVVM ( Model ViewModel View)**
 # 
-     
+
+      Presentation Layer                         Domain Layer                                Data Layer     
       ╔══════════════════════╗                ╔══════════════════════╗                   ╔══════════════════════╗    
       ║     ** VIEW **       ║                ║   ** VIEW MODEL **   ║                   ║     ** MODEL **      ║     
       ║    --------------    ║ ------------→  ║     --------------   ║  ------------→    ║    --------------    ║    
@@ -478,4 +481,9 @@ o/p
      Done Complete --> DefaultDispatcher-worker-3 @coroutine#2 
      Network Called --> DefaultDispatcher-worker-1 @coroutine#1 
      UI elements Loaded --> main
-     
+
+
+![image](https://github.com/Brindha-m/ScreenPlay/assets/72887609/83e5cbc4-4936-455c-9f3a-9f942b1efd21)
+
+
+
