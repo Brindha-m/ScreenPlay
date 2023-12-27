@@ -9,7 +9,9 @@
       ║     UI Components    ║                ║        Survive       ║                   ║      Repositories    ║     
       ║  Activity/ Fragments ║                ║     Config Change    ║                   ║ (Data classes, APIs) ║   
       ╚══════════════════════╝                ╚══════════════════════╝                   ╚══════════════════════╝   
-                                                   Business Logic                                 Repositories
+         
+          UI Layer                                  Business Logic                                 Repositories
+                                                    
                                                     ⭕ State                                     /            \
                                                     ⭕ Live Data                            Remote           Local  
                                                                                           Data Source       Data Source
