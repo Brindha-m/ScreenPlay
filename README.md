@@ -508,3 +508,16 @@ o/p
 5. Save the file as an SVG.
 
 6. Finally import that SVG as Vector Drawables in Android Studio
+
+
+Path Essentials [Android vector drawables]
+
+| Alphabet | Meaning          |
+|----------|------------------|
+| L        | Line to          |
+| C        | Cubic Bezier(curves)  |
+| M        | Move to          |
+| Q        | Quadratic Bezier |
+| Z        | Close Path       |
+| A        | Arc              |
+
