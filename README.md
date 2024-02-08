@@ -489,4 +489,15 @@ o/p
 
 ![image](https://github.com/Brindha-m/ScreenPlay/assets/72887609/d5ee8a8e-40e3-42c8-99d3-27ec0b0c872d)
 
+![app_arch](https://github.com/Brindha-m/ScreenPlay/assets/72887609/6ad9c667-484c-4950-a8c3-43766d21c5e5)
 
+
+
+## If you need to convert text to Path for animated text
+
+1.Go to this https://vectr.com/editor/a59b4f62-7488-44eb-a219-d88d3a4233a8
+2. Type "the text you need " using the text tool.
+3. Adjust the font, size, and spacing as desired.
+4. Convert the text to paths (in Inkscape, you can do this by selecting the text, then choosing "Path" > "Object to Path" from the menu).
+5. Save the file as an SVG.
+6. Finally import that SVG as Vector Drawables in Android Studio
